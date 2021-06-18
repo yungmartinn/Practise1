@@ -1,0 +1,13 @@
+name: MujPlugin
+version: ${project.version}
+main: me.martin.main.Main
+api-version: 1.16
+commands:
+  datareload:
+    description: Reloads the data file!
+  setmessage:
+    description: Lets you choose your own join message!
+  sethome:
+  home:
+  delhome:
+
