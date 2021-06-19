@@ -1,6 +1,6 @@
 package me.martin.main.Commands;
 
-import me.martin.main.DataFile.DataFile;
+import me.martin.main.DataFile.HomeDataFile;
 import me.martin.main.Main;
 import me.martin.main.Utils.BukkitColorFormat;
 import org.bukkit.Location;
@@ -22,9 +22,9 @@ public class HomeCommand implements CommandExecutor {
 
             Player player = (Player) sender;
 
-            if (DataFile.get().getConfigurationSection(player.getUniqueId().toString()).contains("Home: ")) {
+            if (HomeDataFile.get().getConfigurationSection(player.getUniqueId().toString()).contains("Home: ")) {
 
-                Location playerHome = new Location(player.getWorld(), (Double) DataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").get("X:"), (Double) DataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").get("Y:"), (Double) DataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").get("Z:"), (float) DataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").getDouble("Yaw:"), (float) DataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").getDouble("Pitch:"));
+                Location playerHome = new Location(player.getWorld(), (Double) HomeDataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").get("X:"), (Double) HomeDataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").get("Y:"), (Double) HomeDataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").get("Z:"), (float) HomeDataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").getDouble("Yaw:"), (float) HomeDataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").getDouble("Pitch:"));
 
                 player.teleport(playerHome);
 

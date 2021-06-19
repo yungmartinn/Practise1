@@ -1,6 +1,6 @@
 package me.martin.main.Commands;
 
-import me.martin.main.DataFile.DataFile;
+import me.martin.main.DataFile.HomeDataFile;
 import me.martin.main.Main;
 import me.martin.main.Utils.BukkitColorFormat;
 import org.bukkit.command.Command;
@@ -21,7 +21,7 @@ public class ReloadDataCommand implements CommandExecutor {
 
             Player player = (Player) sender;
 
-            DataFile.reloadData();
+            HomeDataFile.reloadData();
 
             player.sendMessage(BukkitColorFormat.formatColor("&aData file has been reloaded!"));
 

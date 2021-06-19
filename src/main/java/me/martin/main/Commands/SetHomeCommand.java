@@ -1,6 +1,6 @@
 package me.martin.main.Commands;
 
-import me.martin.main.DataFile.DataFile;
+import me.martin.main.DataFile.HomeDataFile;
 import me.martin.main.Main;
 import me.martin.main.Utils.BukkitColorFormat;
 import org.bukkit.command.Command;
@@ -21,32 +21,32 @@ public class SetHomeCommand implements CommandExecutor {
 
             Player player = (Player) sender;
 
-            if(!DataFile.get().getConfigurationSection(player.getUniqueId().toString()).contains("Home: ")){
+            if(!HomeDataFile.get().getConfigurationSection(player.getUniqueId().toString()).contains("Home: ")){
 
-                DataFile.get().getConfigurationSection(player.getUniqueId().toString()).createSection("Home: ").set("X:", player.getLocation().getX());
-                DataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").set("Y:", player.getLocation().getY());
-                DataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").set("Z:", player.getLocation().getZ());
-                DataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").set("Yaw:", player.getLocation().getYaw());
-                DataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").set("Pitch:", player.getLocation().getPitch());
+                HomeDataFile.get().getConfigurationSection(player.getUniqueId().toString()).createSection("Home: ").set("X:", player.getLocation().getX());
+                HomeDataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").set("Y:", player.getLocation().getY());
+                HomeDataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").set("Z:", player.getLocation().getZ());
+                HomeDataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").set("Yaw:", player.getLocation().getYaw());
+                HomeDataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").set("Pitch:", player.getLocation().getPitch());
 
-                DataFile.save();
+                HomeDataFile.save();
 
-                DataFile.reloadData();
+                HomeDataFile.reloadData();
 
 
                 player.sendMessage(BukkitColorFormat.formatColor("&6You've set home!"));
 
             }else{
 
-                DataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").set("X:", player.getLocation().getX());
-                DataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").set("Y:", player.getLocation().getY());
-                DataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").set("Z:", player.getLocation().getZ());
-                DataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").set("Yaw:", player.getLocation().getYaw());
-                DataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").set("Pitch:", player.getLocation().getPitch());
+                HomeDataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").set("X:", player.getLocation().getX());
+                HomeDataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").set("Y:", player.getLocation().getY());
+                HomeDataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").set("Z:", player.getLocation().getZ());
+                HomeDataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").set("Yaw:", player.getLocation().getYaw());
+                HomeDataFile.get().getConfigurationSection(player.getUniqueId().toString()).getConfigurationSection("Home: ").set("Pitch:", player.getLocation().getPitch());
 
-                DataFile.save();
+                HomeDataFile.save();
 
-                DataFile.reloadData();
+                HomeDataFile.reloadData();
 
                 player.sendMessage(BukkitColorFormat.formatColor("&6You've overwritten your previous home!"));
 

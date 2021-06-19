@@ -1,6 +1,6 @@
 package me.martin.main.Commands;
 
-import me.martin.main.DataFile.DataFile;
+import me.martin.main.DataFile.HomeDataFile;
 import me.martin.main.Main;
 import me.martin.main.Utils.BukkitColorFormat;
 import org.bukkit.command.Command;
@@ -21,13 +21,13 @@ public class DeleteHomeCommand implements CommandExecutor {
 
             Player player = (Player) sender;
 
-            if(DataFile.get().getConfigurationSection(player.getUniqueId().toString()).contains("Home: ")){
+            if(HomeDataFile.get().getConfigurationSection(player.getUniqueId().toString()).contains("Home: ")){
 
-                DataFile.get().getConfigurationSection(player.getUniqueId().toString()).set("Home: ", null);
+                HomeDataFile.get().getConfigurationSection(player.getUniqueId().toString()).set("Home: ", null);
 
-                DataFile.save();
+                HomeDataFile.save();
 
-                DataFile.reloadData();
+                HomeDataFile.reloadData();
 
                 player.sendMessage(BukkitColorFormat.formatColor("&cYou have deleted your home!"));
 

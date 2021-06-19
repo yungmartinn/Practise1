@@ -1,8 +1,8 @@
 package me.martin.main;
 
 import me.martin.main.Commands.*;
-import me.martin.main.DataFile.DataFile;
-import me.martin.main.EventListeners.PlayerFirstJoin;
+import me.martin.main.DataFile.HomeDataFile;
+import me.martin.main.Scoreboards.ScoreboardEvents.UpdateScoreboard;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -14,26 +14,26 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
 
-        DataFile.setupDataFile();
+        HomeDataFile.setupDataFile();
 
         registerCommands();
 
         registerEvents();
+
+        config();
 
     }
 
     @Override
     public void onDisable() {
 
-        DataFile.save();
+        HomeDataFile.save();
 
     }
 
     public void registerCommands(){
 
         getCommand("datareload").setExecutor(new ReloadDataCommand(this));
-
-        getCommand("setmessage").setExecutor(new SetJoinMessageCommand(this));
 
         getCommand("sethome").setExecutor(new SetHomeCommand(this));
 
@@ -47,7 +47,14 @@ public final class Main extends JavaPlugin {
 
         pluginManager = Bukkit.getPluginManager();
 
-        pluginManager.registerEvents(new PlayerFirstJoin(), this);
+        pluginManager.registerEvents(new UpdateScoreboard(this), this);
+
+    }
+
+    public void config(){
+
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
 
     }
 
